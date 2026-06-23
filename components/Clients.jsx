@@ -1,15 +1,48 @@
 import Image from "next/image";
 import { urlFor } from "../lib/sanity";
+import entel from "../public/images/clientes/entel.png";
+import crianza from "../public/images/clientes/crianza.png";
+import kino from "../public/images/clientes/kino.png";
+import metro from "../public/images/clientes/metro.png";
+import natura from "../public/images/clientes/natura.png";
+import sap from "../public/images/clientes/sap.png";
 
 export default function Clients({ settings, clients }) {
+
+  const clientesM = [
+    {
+      image: entel,
+    },
+    {
+      image: crianza,
+    },
+    {
+      image: kino,
+    },
+    {
+      image: metro,
+    },
+    {
+      image: natura,
+    },
+    {
+      image: sap,
+    }
+  ]
+
+
   return (
     <section className="bg-white py-10 border-y border-gray-100">
-      {settings?.centralPhrase && (
+      {/* {settings?.centralPhrase && (
         <p className="text-center text-gray-600 text-sm mb-8 px-4">
-          {settings.centralPhrase}
+          {settings.centralPhrase} 
         </p>
-      )}
-      <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-10">
+      )} */}
+
+      <p className="text-center text-gray-600 text-[18px] font-medium mb-8 px-4" style={{ color: "#2F4257" }}>
+          Creo experiencias que cuentan historias y se convierten en recuerdos inolvidables
+        </p>
+      {/* <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-10">
         {clients.map((client) =>
           client.logo ? (
             <a
@@ -34,6 +67,21 @@ export default function Clients({ settings, clients }) {
             </span>
           )
         )}
+      </div> */}
+
+
+       <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-10">
+        {clientesM.map((client, i) =>
+          <div key={i}>
+              <Image
+                src={client.image}
+                
+             
+                className="object-contain h-20 w-auto"
+              />
+            </div>
+        )}
+      
       </div>
     </section>
   );

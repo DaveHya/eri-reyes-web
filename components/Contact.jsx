@@ -1,5 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import CalendlyBtn from "../components/CalendlyBtn";
+
+
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -22,9 +25,11 @@ export default function Contact() {
           <p className="text-sm text-gray-500 mb-6 leading-relaxed">
             Hablemos. La forma más rápida de resolver tus preguntas y analizar la viabilidad de tu evento es agendando una breve sesión directa en mi calendario.
           </p>
-          <button className="bg-gray-800 text-white text-sm px-5 py-2.5 rounded-full hover:bg-gray-700 transition-colors font-medium mb-6">
-            Agendar una Reunión Aquí
-          </button>
+          <CalendlyBtn
+          label="Agendar una Reunión Aquí"
+          className="bg-gray-800 text-white text-sm px-5 py-2.5 rounded-full hover:bg-gray-700 transition-colors font-medium mb-6"
+          />
+        
           <p className="text-xs text-gray-400 leading-relaxed">
             Si prefieres avanzar por escrito o dejarnos un requerimiento específico, también puedes usar nuestro formulario
           </p>
@@ -77,4 +82,7 @@ export default function Contact() {
       </div>
     </section>
   );
+
+
+
 }

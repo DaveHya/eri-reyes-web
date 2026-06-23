@@ -10,7 +10,11 @@ export const HOME_QUERY = `{
     ctaButtonLabel,
     ctaButtonUrl,
     portfolioUrl,
-    stats[] { value, label },
+   stats[] {
+  _key,
+  value,
+  label
+},
     centralPhrase,
     ctaBannerTitle,
     ctaBannerSubtitle,
@@ -29,7 +33,7 @@ export const HOME_QUERY = `{
     footerTagline
   },
 
-  "services": *[_type == "service"] | order(order asc) {
+  "services": *[_type == "service" && !(_id in path("drafts.**"))] | order(order asc) {
     _id,
     title,
     description,
@@ -37,7 +41,7 @@ export const HOME_QUERY = `{
     linkUrl
   },
 
-  "featuredProjects": *[_type == "project" && featured == true] | order(order asc) {
+"featuredProjects": *[_type == "project" && featured == true && !(_id in path("drafts.**"))] | order(order asc) {
     _id,
     title,
     "slug": slug.current,
@@ -48,7 +52,7 @@ export const HOME_QUERY = `{
     summary
   },
 
-  "testimonials": *[_type == "testimonial" && featured == true] | order(order asc) {
+  "testimonials": *[_type == "testimonial" && featured == true && !(_id in path("drafts.**"))] | order(order asc) {
     _id,
     author,
     role,
@@ -56,7 +60,7 @@ export const HOME_QUERY = `{
     text
   },
 
-  "clients": *[_type == "client" && active == true] | order(order asc) {
+  "clients": *[_type == "client" && active == true && !(_id in path("drafts.**"))] | order(order asc) {
     _id,
     name,
     logo,

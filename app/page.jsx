@@ -17,6 +17,8 @@ export const revalidate = 60;
 
 export default async function Home() {
   const data = await sanityClient.fetch(HOME_QUERY);
+ // console.log("FEATURED PROJECTS:", JSON.stringify(data.featuredProjects?.map(p => ({ id: p._id, title: p.title })), null, 2));
+  //console.log("DATA COMPLETA:", JSON.stringify(data.settings, null, 2))
   const { settings, services, featuredProjects, testimonials, clients } = data;
 
   return (

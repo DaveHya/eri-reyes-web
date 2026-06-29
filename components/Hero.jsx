@@ -3,6 +3,7 @@ import { urlFor } from "../lib/sanity";
 import logoEri from "../public/images/logo-eri.png";
 import imgEri from "../public/images/img-eri.png";
 import CalendlyBtn from "../components/CalendlyBtn";
+import { NumberTicker } from "../components/ui/number-ticker"
 
 export default function Hero({ settings }) {
   const {
@@ -143,9 +144,17 @@ export default function Hero({ settings }) {
             {statsM.map((s, i) => (
               <div key={i} className="text-center" style={{width:"80%"}}>
                 <div className="text-[28px] md:text-[36px] font-bold text-gray-800 leading-none">
-                  {s.value}
+               
+                   <span>+</span>
+    <NumberTicker
+      value={parseInt(s.value.replace(/\D/g, ''))}
+      className="text-[28px] md:text-[36px] font-bold"
+      style={{ color: "#2F4257" }}
+    />
                 </div>
-                <div className="text-[12px] text-gray-500 mt-1 leading-tight font-semibold" style={{ color: "#2F4257" }}>
+             
+
+                     <div className="text-[12px] text-gray-500 mt-1 leading-tight font-semibold" style={{ color: "#2F4257" }}>
                   {s.label}
                 </div>
               </div>

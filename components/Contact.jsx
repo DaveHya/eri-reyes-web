@@ -1,11 +1,18 @@
 "use client";
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
+import { useState, useEffect, useRef } from "react";
 import CalendlyBtn from "../components/CalendlyBtn";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle");
+  const emailjsRef = useRef(null);
+
+  // Importa EmailJS solo en el cliente
+  useEffect(() => {
+    import("@emailjs/browser").then((mod) => {
+      emailjsRef.current = mod.default;
+    });
+  }, []);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -17,10 +24,15 @@ export default function Contact() {
       return;
     }
 
+    if (!emailjsRef.current) {
+      alert("Error al cargar el servicio de email. Intenta de nuevo.");
+      return;
+    }
+
     setStatus("loading");
 
     try {
-      await emailjs.send(
+      await emailjsRef.current.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
@@ -42,7 +54,6 @@ export default function Contact() {
   return (
     <section className="bg-white py-16 px-6">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-start">
-        {/* Left */}
         <div className="flex-1 max-w-sm">
           <h2 className="text-2xl font-bold text-gray-800 mb-3 leading-snug">
             ¿Tienes Dudas Sobre Tu Próximo Proyecto?
@@ -59,7 +70,6 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* Right: Form */}
         <div className="flex-1 w-full max-w-md">
           <div className="space-y-4">
             <div>
@@ -101,7 +111,6 @@ export default function Contact() {
               </button>
             </div>
 
-            {/* Mensajes de estado */}
             {status === "success" && (
               <div className="bg-green-50 border border-green-200 text-green-700 text-sm px-4 py-3 rounded-lg">
                 ✅ ¡Mensaje enviado! Me pondré en contacto contigo pronto.

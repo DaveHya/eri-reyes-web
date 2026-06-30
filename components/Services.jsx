@@ -89,7 +89,7 @@ const services = [
 
 function CloseButton({ onClose }) {
   return (
-    <button onClick={onClose} className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors flex-shrink-0">
+    <button onClick={onClose} className="w-8 h-8 -full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors flex-shrink-0">
       <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -104,11 +104,11 @@ function ModalPlanesCreativo({ service, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} onClick={onClose}>
       <div
-        className="bg-white w-full md:rounded-2xl md:max-w-5xl max-h-[92vh] overflow-y-auto shadow-2xl rounded-t-2xl"
+        className="bg-white w-full  md:max-w-5xl max-h-[92vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-[#2F4257] text-white px-6 py-5 flex items-center justify-between sticky top-0 z-10 rounded-t-2xl md:rounded-t-2xl">
+        <div className="bg-white text-[#2F4257] px-6 py-5 flex items-center justify-between sticky top-0 z-10 -t-2xl md:-t-2xl">
           <h3 className="text-base md:text-xl font-bold">Planes — {service.title}</h3>
           <CloseButton onClose={onClose} />
         </div>
@@ -131,9 +131,9 @@ function ModalPlanesCreativo({ service, onClose }) {
               </button>
               {open === i && (
                 <div className="px-6 pb-5 space-y-3">
-                  <div className="bg-gray-50 rounded-lg p-3 text-xs text-gray-600">{plan.descripcion}</div>
+                  <div className="bg-gray-50 -lg p-3 text-xs text-gray-600">{plan.descripcion}</div>
                   <p className="text-xs text-gray-500"><span className="font-semibold text-[#2F4257]">Ideal para:</span> {plan.ideal}</p>
-                  <div className="bg-[#2F4257] text-white text-center text-lg font-bold py-2.5 rounded-lg">{plan.precio}</div>
+                  <div className="bg-[#2F4257] text-white text-center text-lg font-bold py-2.5 -lg">{plan.precio}</div>
                   <p className="text-xs font-bold text-[#2F4257]">¿Qué incluye?</p>
                   <ul className="space-y-1.5">
                     {plan.incluye.map((item, j) => (
@@ -153,9 +153,9 @@ function ModalPlanesCreativo({ service, onClose }) {
           {service.planes.map((plan, i) => (
             <div key={i} className="p-6 flex flex-col">
               <h4 className="font-bold text-[#2F4257] text-sm text-center uppercase tracking-wide mb-3 min-h-[40px] flex items-center justify-center">{plan.nombre}</h4>
-              <div className="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 text-center mb-3 font-medium min-h-[60px] flex items-center justify-center">{plan.descripcion}</div>
+              <div className="bg-gray-50 -lg p-3 text-xs text-gray-600 text-center mb-3 font-medium min-h-[60px] flex items-center justify-center">{plan.descripcion}</div>
               <div className="text-xs text-gray-500 text-center mb-4 min-h-[50px]"><span className="font-semibold text-[#2F4257]">Ideal para:</span> {plan.ideal}</div>
-              <div className="bg-[#2F4257] text-white text-center text-xl font-bold py-3 rounded-lg mb-4">{plan.precio}</div>
+              <div className="bg-[#2F4257] text-white text-center text-xl font-bold py-3 -lg mb-4">{plan.precio}</div>
               <p className="text-xs font-bold text-[#2F4257] mb-2">¿Qué incluye?</p>
               <ul className="space-y-1.5 flex-1">
                 {plan.incluye.map((item, j) => (
@@ -181,11 +181,11 @@ function ModalPlanesGPD({ service, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} onClick={onClose}>
       <div
-        className="bg-white w-full md:rounded-2xl md:max-w-4xl max-h-[92vh] overflow-y-auto shadow-2xl rounded-t-2xl"
+        className="bg-white w-full  md:max-w-4xl max-h-[92vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-[#2F4257] text-white px-6 py-5 flex items-center justify-between sticky top-0 z-10 rounded-t-2xl md:rounded-t-2xl">
+        <div className="bg-white text-[#2F4257] px-6 py-5 flex items-center justify-between sticky top-0 z-10 ">
           <h3 className="text-base md:text-xl font-bold">Planes — {service.title}</h3>
           <CloseButton onClose={onClose} />
         </div>
@@ -216,12 +216,12 @@ function ModalPlanesGPD({ service, onClose }) {
               {service.specs.map((row, i) => (
                 <div key={i} className="flex justify-between items-center py-2 border-b border-gray-100">
                   <span className="text-xs text-[#2F4257] font-medium">{row.label}</span>
-                  <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded text-right max-w-[55%]">{row[activeTab]}</span>
+                  <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1  text-right max-w-[55%]">{row[activeTab]}</span>
                 </div>
               ))}
               {/* Precio */}
               <div className="pt-2">
-                <div className="bg-[#2F4257] text-white text-center text-xl font-bold py-3 rounded-lg">
+                <div className="bg-[#2F4257] text-white text-center text-xl font-bold py-3 -lg">
                   {service.precios[activeTab]}
                 </div>
               </div>
@@ -259,7 +259,7 @@ function ModalPlanesGPD({ service, onClose }) {
                     <td className="py-3 pr-4 text-[#2F4257] font-medium text-xs">{row.label}</td>
                     {cols.map((col) => (
                       <td key={col} className="py-3 text-center">
-                        <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded block mx-1">{row[col]}</span>
+                        <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1.5  block mx-1">{row[col]}</span>
                       </td>
                     ))}
                   </tr>
@@ -268,7 +268,7 @@ function ModalPlanesGPD({ service, onClose }) {
                   <td className="py-3 text-[#2F4257] font-medium text-xs">Valor CLP</td>
                   {cols.map((col) => (
                     <td key={col} className="py-3 text-center">
-                      <span className="bg-[#2F4257] text-white font-bold text-base px-3 py-2 rounded block mx-1">{service.precios[col]}</span>
+                      <span className="bg-[#2F4257] text-white font-bold text-base px-3 py-2  block mx-1">{service.precios[col]}</span>
                     </td>
                   ))}
                 </tr>

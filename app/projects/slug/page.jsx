@@ -1,5 +1,5 @@
 // app/proyectos/[slug]/page.jsx
-import { sanityClient, urlFor } from "../lib/sanity";
+import { sanityClient, urlFor } from '@/lib/sanity';
 import { PROJECT_BY_SLUG_QUERY, PROJECT_SLUGS_QUERY } from "@/queries";
 import Image from "next/image";
 import Link from "next/link";

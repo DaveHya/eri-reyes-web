@@ -2,7 +2,7 @@ import Image from "next/image";
 import { urlFor } from "../lib/sanity";
 import logoEri from "../public/images/logo-eri.png";
 import imgEri from "../public/images/img-eri.png";
-import CalendlyBtn from "../components/CalendlyBtn";
+import CalendlyBtn from "./CalendlyBtn";
 import { NumberTicker } from "../components/ui/number-ticker"
 
 export default function Hero({ settings }) {
@@ -59,7 +59,7 @@ export default function Hero({ settings }) {
               />
   
                <a
-                href={portfolioUrl}
+                 href="/soy-eri-reyes.pdf"
                 download
                 className="border border-gray-400 text-gray-700 text-sm px-5 py-2.5 rounded-full hover:bg-gray-100 transition-colors flex items-center gap-2 font-medium"
               >

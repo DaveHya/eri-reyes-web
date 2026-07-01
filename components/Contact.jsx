@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import CalendlyBtn from "../components/CalendlyBtn";
+import CalendlyBtn from "./CalendlyBtn";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });

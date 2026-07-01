@@ -1,4 +1,4 @@
-import CalendlyBtn from "../components/CalendlyBtn";
+import CalendlyBtn from "./CalendlyBtn";
 
 export default function CTABanner() {
   return (
